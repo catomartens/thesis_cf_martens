@@ -1,0 +1,33 @@
+{
+"type": "FeatureCollection",
+"name": "postnl_distribution_cleaned",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "depotAbbreviation": "ALR-WV", "depotCity": "Almere", "id": 210406, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.315429405, 52.31895058 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "AL-EW", "depotCity": "Alphen aan den Rijn (NLI)", "id": 223153, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.677957619, 52.1140247 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "AMF-WT", "depotCity": "Amersfoort", "id": 160664, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.423774446, 52.16559815 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "ASD-JOA", "depotCity": "Amsterdam-Zuidoost", "id": 208802, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.9254172, 52.3237157 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "AP-OAW", "depotCity": "Apeldoorn", "id": 208683, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.965311977, 52.1753771 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "BORN-HN", "depotCity": "Born", "id": 157653, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.8136189, 51.0688733 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "BD-SB", "depotCity": "Breda", "id": 157648, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.759661392, 51.60315727 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "HT-KK", "depotCity": "Den Bosch", "id": 156836, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.271834919, 51.70320616 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "HBD-H", "depotCity": "Den Hoorn", "id": 161099, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.319690261, 52.00468047 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "DDT-ZS", "depotCity": "Dordrecht", "id": 211188, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.640998461, 51.77479037 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "ELT-N", "depotCity": "Elst", "id": 156734, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.862118048, 51.9139513 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "GS-CO", "depotCity": "Goes", "id": 166248, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 3.887322185, 51.48448751 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "HGL-Z", "depotCity": "Hengelo", "id": 156837, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 6.783086705, 52.24563304 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "HGV-BV", "depotCity": "Hoogeveen", "id": 220734, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 6.503960388, 52.71194217 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "KHM-O", "depotCity": "Kolham", "id": 161102, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 6.747570177, 53.17103189 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "LW-B", "depotCity": "Leeuwarden", "id": 161111, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.753821532, 53.18382892 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "NIWG-MO", "depotCity": "Nieuwegein", "id": 205748, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.115741412, 52.01349328 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "OPM-V", "depotCity": "Opmeer", "id": 166885, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.957301661, 52.71246827 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "RD-S", "depotCity": "Ridderkerk", "id": 171966, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.561506248, 51.87670384 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "SSH-E", "depotCity": "Sassenheim", "id": 176047, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.496881817, 52.21361103 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "SON-EK", "depotCity": "Son", "id": 166244, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.480864715, 51.50217824 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "TB-LE", "depotCity": "Tilburg", "id": 212123, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 5.044459088, 51.58407487 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "VL-PO", "depotCity": "Venlo", "id": 208798, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 6.100839116, 51.40933853 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "WVN-O", "depotCity": "Waddinxveen", "id": 156678, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.641525161, 52.0164488 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "WZN-FMT", "depotCity": "Westzaan", "id": 216455, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 4.771892092, 52.43053973 ] } },
+{ "type": "Feature", "properties": { "depotAbbreviation": "ZL-NK", "depotCity": "Zwolle", "id": 172799, "type": "distribution" }, "geometry": { "type": "Point", "coordinates": [ 6.138804665, 52.49487165 ] } }
+]
+}

@@ -1,0 +1,33 @@
+﻿area_type,Sf,Sp,Ss,L1,L2,L3,L4,L5,Height
+Motorways and major roads,4,3,1,3,2,1,1,3,30
+Regional roads,3,3,2,4,3,1,3,2,30
+Tracks and rural access roads,2,2,1,2,1,3,2,2,30
+Living and residential streets,3,4,4,5,4,1,5,3,30
+Pedestrian and cycling paths,3,2,3,4,2,2,2,2,30
+Railways,4,3,2,5,2,2,1,4,30
+Power lines,1,4,1,2,2,3,1,5,60
+Power plants,1,4,2,4,3,2,3,5,60
+Communication towers,1,3,1,4,5,1,2,4,60
+High infrastructures,1,3,2,4,2,1,3,3,60
+Industrial zones,2,4,2,5,5,1,5,5,60
+Commercial zones,3,3,3,5,4,1,4,3,60
+Retail zones,4,4,3,5,4,1,4,3,60
+Residential areas,2,4,4,5,4,1,5,3,60
+Recreational zones,4,2,3,4,2,2,3,2,30
+Agricultural lands,1,2,1,2,1,3,1,2,30
+Forests and woodlands,1,1,1,4,1,3,3,1,30
+Meadows and open grass,1,1,1,2,1,2,1,1,30
+"Rivers, canals and streams",1,1,1,2,1,2,1,1,30
+Lakes and ponds,2,1,1,1,1,2,1,1,30
+Water reservoirs,1,2,1,1,1,3,1,2,30
+Wetlands,1,1,1,2,1,1,1,1,30
+Schools and universities,4,3,4,5,4,1,4,3,30
+Hospitals,2,3,4,5,4,1,4,4,60
+Prisons,2,3,3,5,3,1,4,3,60
+Religious sites,2,3,4,5,1,2,3,2,30
+Cultural sites,4,3,3,4,2,1,3,2,30
+Cemeteries,3,2,4,3,1,2,2,1,30
+Parks,4,2,3,5,2,2,3,2,30
+Helipads,4,4,4,,,,,,
+Airports and airfields,4,4,4,,,,,,
+connector,,,,,,,,,30

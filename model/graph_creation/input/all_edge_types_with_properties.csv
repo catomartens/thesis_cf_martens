@@ -1,0 +1,33 @@
+﻿area_type,Height
+Motorways and major roads,30
+Regional roads,30
+Tracks and rural access roads,30
+Living and residential streets,30
+Pedestrian and cycling paths,30
+Railways,30
+Power lines,60
+Power plants,60
+Communication towers,60
+High infrastructures,60
+Industrial zones,60
+Commercial zones,60
+Retail zones,60
+Residential areas,60
+Recreational zones,30
+Agricultural lands,30
+Forests and woodlands,30
+Meadows and open grass,30
+"Rivers, canals and streams",30
+Lakes and ponds,30
+Water reservoirs,30
+Wetlands,30
+Schools and universities,30
+Hospitals,60
+Prisons,60
+Religious sites,30
+Cultural sites,30
+Cemeteries,30
+Parks,30
+Helipads,
+Airports and airfields,
+connector,30
