@@ -1,0 +1,22 @@
+alpha,scenario,mean_path_length_m,min_path_length_m,max_path_length_m,count_paths
+alpha_0,Base,4172.7,862.7,14388.2,63
+alpha_0,Higher horizontal (+20%),4171.5,862.7,14388.2,63
+alpha_0,Lower horizontal (-20%),4174.0,862.7,14388.2,63
+alpha_0,Higher vertical (+20%),4174.0,862.7,14388.2,63
+alpha_0,Lower vertical (-20%),4171.5,862.7,14388.2,63
+alpha_0,All higher (+20%),4172.7,862.7,14388.2,63
+alpha_0,All lower (-20%),4172.7,862.7,14388.2,63
+alpha_0.5,Base,5609.3,913.0,16085.0,63
+alpha_0.5,Higher horizontal (+20%),5561.4,913.0,16076.7,63
+alpha_0.5,Lower horizontal (-20%),5677.1,913.0,16104.7,63
+alpha_0.5,Higher vertical (+20%),5603.4,913.0,16085.0,63
+alpha_0.5,Lower vertical (-20%),5609.3,913.0,16085.0,63
+alpha_0.5,All higher (+20%),5558.2,913.0,16076.7,63
+alpha_0.5,All lower (-20%),5677.1,913.0,16104.7,63
+alpha_1,Base,6385.2,913.0,17641.1,63
+alpha_1,Higher horizontal (+20%),6385.2,913.0,17641.1,63
+alpha_1,Lower horizontal (-20%),6385.2,913.0,17641.1,63
+alpha_1,Higher vertical (+20%),6385.2,913.0,17641.1,63
+alpha_1,Lower vertical (-20%),6385.2,913.0,17641.1,63
+alpha_1,All higher (+20%),6385.2,913.0,17641.1,63
+alpha_1,All lower (-20%),6385.2,913.0,17641.1,63
