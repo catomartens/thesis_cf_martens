@@ -72,17 +72,16 @@ def euclidean_heuristic(u, v, G):
 
 def connect_distribution_to_postnl(G, alpha, method):
     """
-    Connect each PostNL node to its nearest distribution node via the shortest path.
-
-    The cost is computed using 'cost' (combined risk and energy), weighted by alpha.
+    For each PostNL node, find the distribution node that yields the lowest total cost path.
 
     Args:
         G (networkx.Graph): Graph with nodes and weighted edges.
         alpha (float): Trade-off factor between risk and energy.
+        method (str): 'astar' or 'dijkstra'
 
     Returns:
         connected (list of tuples): (distribution_node, postnl_node, total_length, path_nodes, path_edges, etype_array)
-        not_connected (list of tuples): (postnl_node,)
+        not_connected (list): list of postnl_nodes that could not be connected.
     """
     if method not in ['astar', 'dijkstra']:
         raise ValueError("Method must be either 'astar' or 'dijkstra'")
@@ -101,19 +100,21 @@ def connect_distribution_to_postnl(G, alpha, method):
 
     for postnl_node in postnl_nodes:
         best_path = None
-        best_cost = float('inf')
-        best_data = None
+        best_total_cost = float('inf')
 
         for dist_node in distribution_nodes:
             try:
                 if method == 'astar':
-                    path_nodes = nx.astar_path(G, dist_node, postnl_node, heuristic=lambda u, v=postnl_node: euclidean_heuristic(u, v, G), weight='cost')
-                elif method == 'dijkstra':
+                    path_nodes = nx.astar_path(G, dist_node, postnl_node,
+                                               heuristic=lambda u, v=postnl_node: euclidean_heuristic(u, v, G),
+                                               weight='cost')
+                else:  # dijkstra
                     path_nodes = nx.shortest_path(G, dist_node, postnl_node, weight='cost')
-                
+
                 path_edges = list(zip(path_nodes[:-1], path_nodes[1:]))
 
-                total_length = 1
+                total_length = 0
+                total_cost = 0
                 path_geometries = []
                 etype_array = []
 
@@ -127,10 +128,15 @@ def connect_distribution_to_postnl(G, alpha, method):
 
                     path_geometries.append((geom, u, v))
                     etype_array.append(edge_data.get('etype', 'unknown'))
-                    total_length += edge_data.get('length', geom.length)
 
-                if total_length < best_cost:
-                    best_cost = total_length
+                    length = edge_data.get('length', geom.length)
+                    cost = edge_data.get('cost', 1)
+
+                    total_length += length
+                    total_cost += cost
+
+                if total_cost < best_total_cost:
+                    best_total_cost = total_cost
                     best_path = (dist_node, postnl_node, total_length, path_nodes, path_geometries, etype_array)
 
             except nx.NetworkXNoPath:
@@ -138,7 +144,7 @@ def connect_distribution_to_postnl(G, alpha, method):
 
         if best_path:
             connected.append(best_path)
-            print(f"Connected: {best_path[0]} → {postnl_node} | {best_cost:.1f} m | {len(best_path[3])} nodes")
+            print(f"Connected: {best_path[0]} → {postnl_node} | Length: {best_path[2]:.1f} m | Cost: {best_total_cost:.2f}")
         else:
             not_connected.append((postnl_node,))
             print(f"No path: {postnl_node}")
@@ -154,4 +160,3 @@ def connect_distribution_to_postnl(G, alpha, method):
         print(f" - Shortest path:  {np.min(lengths):.1f} m")
 
     return connected, not_connected
-

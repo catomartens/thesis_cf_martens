@@ -15,14 +15,12 @@ def evaluate_alpha_tradeoff(G, alpha_list, method):
     Evaluate routing trade-offs for different alpha values by computing summary metrics
     across all distribution → PostNL paths, including both route and topological metrics.
 
-    Args:
-        G (networkx.Graph): Input graph with edge attributes including 'risk', 'energy', 'length', 'height'.
-        alpha_list (list of float): List of alpha values (0 to 1) controlling the trade-off between risk and energy.
+    Adds total cost calculations.
 
     Returns:
         tuple:
             - pd.DataFrame: Summary per alpha with metrics:
-                ['alpha', 'n_paths', 'mean_risk', 'mean_energy', 'mean_length',
+                ['alpha', 'n_paths', 'mean_risk', 'mean_energy', 'mean_cost', 'mean_length',
                  'max_length', 'min_length', 'avg_steps', 'n_unique_nodes', 'n_unique_etypes',
                  'avg_node_degree', 'avg_clustering', 'edge_node_ratio', 'diameter', 'n_articulations']
             - list of str: All etypes observed across all alphas (flat list)
@@ -37,6 +35,7 @@ def evaluate_alpha_tradeoff(G, alpha_list, method):
 
         total_risks = []
         total_energies = []
+        total_costs = []
         total_lengths = []
         step_counts = []
         unique_nodes = set()
@@ -48,6 +47,7 @@ def evaluate_alpha_tradeoff(G, alpha_list, method):
         for _, _, total_length, path_nodes, path_edges, etype_array in connected:
             path_risk = 0
             path_energy = 0
+            path_cost = 0
 
             for geom, u, v in path_edges:
                 edge_data = G.get_edge_data(u, v)
@@ -55,14 +55,19 @@ def evaluate_alpha_tradeoff(G, alpha_list, method):
                 risk = edge_data.get("risk", 1)
                 energy = edge_data.get("energy", 0)
 
+                edge_cost = alpha * (risk * length) + (1 - alpha) * energy
+
                 path_risk += risk * length
                 path_energy += energy
+                path_cost += edge_cost
+
                 used_edges.add((u, v))
                 used_nodes.update([u, v])
 
             total_lengths.append(total_length)
             total_risks.append(path_risk)
             total_energies.append(path_energy)
+            total_costs.append(path_cost)
 
             step_coords = [pt for pt in path_nodes if isinstance(pt, tuple) and len(pt) == 2]
             step_counts.append(len(step_coords))
@@ -95,6 +100,7 @@ def evaluate_alpha_tradeoff(G, alpha_list, method):
                 "n_paths": len(connected),
                 "mean_risk": np.mean(total_risks),
                 "mean_energy": np.mean(total_energies),
+                "mean_cost": np.mean(total_costs),
                 "mean_length": np.mean(total_lengths),
                 "max_length": np.max(total_lengths),
                 "min_length": np.min(total_lengths),
@@ -113,6 +119,7 @@ def evaluate_alpha_tradeoff(G, alpha_list, method):
                 "n_paths": 0,
                 "mean_risk": np.nan,
                 "mean_energy": np.nan,
+                "mean_cost": np.nan,
                 "mean_length": np.nan,
                 "max_length": np.nan,
                 "min_length": np.nan,
