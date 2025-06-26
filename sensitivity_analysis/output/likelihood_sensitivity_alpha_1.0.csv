@@ -1,0 +1,51 @@
+alpha,scenario,area_type,parameter,change_direction,length_change_%,risk_change_%,energy_change_%,turns_change_%,height_changes_change_%
+1.0,Meadows and open grass - Communication -1,Meadows and open grass,Communication,-1,7.393612254814447,-8.491893311646544,7.068555491999219,2.5530243519245874,1.4742014742014689
+1.0,Meadows and open grass - Communication +1,Meadows and open grass,Communication,1,-2.6785808756683216,3.9993819620701614,-2.5765057741041764,-5.253338570306364,-1.4742014742014828
+1.0,Meadows and open grass - Electrical -1,Meadows and open grass,Electrical,-1,0.0,0.0,0.0,0.0,0.0
+1.0,Meadows and open grass - Electrical +1,Meadows and open grass,Electrical,1,-2.6785808756683216,3.9993819620701614,-2.5765057741041764,-5.253338570306364,-1.4742014742014828
+1.0,Meadows and open grass - Interference -1,Meadows and open grass,Interference,-1,0.0,0.0,0.0,0.0,0.0
+1.0,Meadows and open grass - Interference +1,Meadows and open grass,Interference,1,-2.6785808756683216,3.9993819620701614,-2.5765057741041764,-5.253338570306364,-1.4742014742014828
+1.0,Meadows and open grass - Navigational -1,Meadows and open grass,Navigational,-1,0.0,0.0,0.0,0.0,0.0
+1.0,Meadows and open grass - Navigational +1,Meadows and open grass,Navigational,1,-2.6785808756683216,3.9993819620701614,-2.5765057741041764,-5.253338570306364,-1.4742014742014828
+1.0,Meadows and open grass - Obstacles -1,Meadows and open grass,Obstacles,-1,7.393612254814447,-8.491893311646544,7.068555491999219,2.5530243519245874,1.4742014742014689
+1.0,Meadows and open grass - Obstacles +1,Meadows and open grass,Obstacles,1,-2.6785808756683216,3.9993819620701614,-2.5765057741041764,-5.253338570306364,-1.4742014742014828
+1.0,Pedestrian and cycling paths - Communication -1,Pedestrian and cycling paths,Communication,-1,-0.023510916132719058,-1.1620522846229606,-0.0031298694228176715,0.08837391987431015,0.49140049140048964
+1.0,Pedestrian and cycling paths - Communication +1,Pedestrian and cycling paths,Communication,1,-0.5458690433406023,1.1120322528060258,-0.5134601299114756,-0.4418695993715683,0.0
+1.0,Pedestrian and cycling paths - Electrical -1,Pedestrian and cycling paths,Electrical,-1,-0.023510916132719058,-1.1620522846229606,-0.0031298694228176715,0.08837391987431015,0.49140049140048964
+1.0,Pedestrian and cycling paths - Electrical +1,Pedestrian and cycling paths,Electrical,1,-0.5458690433406023,1.1120322528060258,-0.5134601299114756,-0.4418695993715683,0.0
+1.0,Pedestrian and cycling paths - Interference -1,Pedestrian and cycling paths,Interference,-1,-0.023510916132719058,-1.1620522846229606,-0.0031298694228176715,0.08837391987431015,0.49140049140048964
+1.0,Pedestrian and cycling paths - Interference +1,Pedestrian and cycling paths,Interference,1,-0.5458690433406023,1.1120322528060258,-0.5134601299114756,-0.4418695993715683,0.0
+1.0,Pedestrian and cycling paths - Navigational -1,Pedestrian and cycling paths,Navigational,-1,-0.023510916132719058,-1.1620522846229606,-0.0031298694228176715,0.08837391987431015,0.49140049140048964
+1.0,Pedestrian and cycling paths - Navigational +1,Pedestrian and cycling paths,Navigational,1,-0.5458690433406023,1.1120322528060258,-0.5134601299114756,-0.4418695993715683,0.0
+1.0,Pedestrian and cycling paths - Obstacles -1,Pedestrian and cycling paths,Obstacles,-1,-0.023510916132719058,-1.1620522846229606,-0.0031298694228176715,0.08837391987431015,0.49140049140048964
+1.0,Pedestrian and cycling paths - Obstacles +1,Pedestrian and cycling paths,Obstacles,1,-0.5458690433406023,1.1120322528060258,-0.5134601299114756,-0.4418695993715683,0.0
+1.0,Regional roads - Communication -1,Regional roads,Communication,-1,0.0,0.0,0.0,0.0,0.0
+1.0,Regional roads - Communication +1,Regional roads,Communication,1,0.008942123979375494,1.0706618389145213,0.065366743632202,0.24548311076197654,0.9828009828009793
+1.0,Regional roads - Electrical -1,Regional roads,Electrical,-1,-0.3768721926738055,-1.167221147949502,-0.33551165434346875,-0.10801256873526405,0.0
+1.0,Regional roads - Electrical +1,Regional roads,Electrical,1,0.008942123979375494,1.0706618389145213,0.065366743632202,0.24548311076197654,0.9828009828009793
+1.0,Regional roads - Interference -1,Regional roads,Interference,-1,-0.3768721926738055,-1.167221147949502,-0.33551165434346875,-0.10801256873526405,0.0
+1.0,Regional roads - Interference +1,Regional roads,Interference,1,0.008942123979375494,1.0706618389145213,0.065366743632202,0.24548311076197654,0.9828009828009793
+1.0,Regional roads - Navigational -1,Regional roads,Navigational,-1,-0.3768721926738055,-1.167221147949502,-0.33551165434346875,-0.10801256873526405,0.0
+1.0,Regional roads - Navigational +1,Regional roads,Navigational,1,0.008942123979375494,1.0706618389145213,0.065366743632202,0.24548311076197654,0.9828009828009793
+1.0,Regional roads - Obstacles -1,Regional roads,Obstacles,-1,-0.3768721926738055,-1.167221147949502,-0.33551165434346875,-0.10801256873526405,0.0
+1.0,Regional roads - Obstacles +1,Regional roads,Obstacles,1,0.008942123979375494,1.0706618389145213,0.065366743632202,0.24548311076197654,0.9828009828009793
+1.0,"Rivers, canals and streams - Communication -1","Rivers, canals and streams",Communication,-1,1.1810087236124196,-11.972086692923947,1.0729204400747732,-10.958366064414774,-0.49140049140048964
+1.0,"Rivers, canals and streams - Communication +1","Rivers, canals and streams",Communication,1,-3.6684626264581457,7.856596538630495,-3.4316763340683463,-5.626472898664576,0.0
+1.0,"Rivers, canals and streams - Electrical -1","Rivers, canals and streams",Electrical,-1,0.0,0.0,0.0,0.0,0.0
+1.0,"Rivers, canals and streams - Electrical +1","Rivers, canals and streams",Electrical,1,-3.6684626264581457,7.856596538630495,-3.4316763340683463,-5.626472898664576,0.0
+1.0,"Rivers, canals and streams - Interference -1","Rivers, canals and streams",Interference,-1,0.0,0.0,0.0,0.0,0.0
+1.0,"Rivers, canals and streams - Interference +1","Rivers, canals and streams",Interference,1,-3.6684626264581457,7.856596538630495,-3.4316763340683463,-5.626472898664576,0.0
+1.0,"Rivers, canals and streams - Navigational -1","Rivers, canals and streams",Navigational,-1,0.0,0.0,0.0,0.0,0.0
+1.0,"Rivers, canals and streams - Navigational +1","Rivers, canals and streams",Navigational,1,-3.6684626264581457,7.856596538630495,-3.4316763340683463,-5.626472898664576,0.0
+1.0,"Rivers, canals and streams - Obstacles -1","Rivers, canals and streams",Obstacles,-1,1.1810087236124196,-11.972086692923947,1.0729204400747732,-10.958366064414774,-0.49140049140048964
+1.0,"Rivers, canals and streams - Obstacles +1","Rivers, canals and streams",Obstacles,1,-3.6684626264581457,7.856596538630495,-3.4316763340683463,-5.626472898664576,0.0
+1.0,Tracks and rural access roads - Communication -1,Tracks and rural access roads,Communication,-1,0.023145701214589875,-3.0873575450430906,0.021771512595446664,0.03927729772192538,0.0
+1.0,Tracks and rural access roads - Communication +1,Tracks and rural access roads,Communication,1,-0.9913874644701155,2.5623148055998075,1.459604452151391,-0.26512175962293044,-0.49140049140048964
+1.0,Tracks and rural access roads - Electrical -1,Tracks and rural access roads,Electrical,-1,0.023145701214589875,-3.0873575450430906,0.021771512595446664,0.03927729772192538,0.0
+1.0,Tracks and rural access roads - Electrical +1,Tracks and rural access roads,Electrical,1,-0.9913874644701155,2.5623148055998075,1.459604452151391,-0.26512175962293044,-0.49140049140048964
+1.0,Tracks and rural access roads - Interference -1,Tracks and rural access roads,Interference,-1,0.0,0.0,0.0,0.0,0.0
+1.0,Tracks and rural access roads - Interference +1,Tracks and rural access roads,Interference,1,-0.9913874644701155,2.5623148055998075,1.459604452151391,-0.26512175962293044,-0.49140049140048964
+1.0,Tracks and rural access roads - Navigational -1,Tracks and rural access roads,Navigational,-1,0.023145701214589875,-3.0873575450430906,0.021771512595446664,0.03927729772192538,0.0
+1.0,Tracks and rural access roads - Navigational +1,Tracks and rural access roads,Navigational,1,-0.9913874644701155,2.5623148055998075,1.459604452151391,-0.26512175962293044,-0.49140049140048964
+1.0,Tracks and rural access roads - Obstacles -1,Tracks and rural access roads,Obstacles,-1,0.023145701214589875,-3.0873575450430906,0.021771512595446664,0.03927729772192538,0.0
+1.0,Tracks and rural access roads - Obstacles +1,Tracks and rural access roads,Obstacles,1,-0.9913874644701155,2.5623148055998075,1.459604452151391,-0.26512175962293044,-0.49140049140048964

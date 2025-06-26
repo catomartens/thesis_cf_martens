@@ -1,0 +1,7 @@
+length_change_%,length_change_%,length_change_%,length_change_%,risk_change_%,risk_change_%,risk_change_%,risk_change_%,energy_change_%,energy_change_%,energy_change_%,energy_change_%,turns_change_%,turns_change_%,turns_change_%,turns_change_%,height_changes_change_%,height_changes_change_%,height_changes_change_%,height_changes_change_%
+mean,std,min,max,mean,std,min,max,mean,std,min,max,mean,std,min,max,mean,std,min,max
+0.75,0.78,0.0,2.12,0.26,4.46,-7.63,3.56,0.71,0.76,0.0,2.06,1.85,2.62,0.0,6.75,0.31,0.65,0.0,1.53
+0.08,0.18,-0.09,0.24,-0.04,0.99,-0.98,0.9,0.04,0.2,-0.15,0.23,-0.22,0.32,-0.53,0.09,-0.51,0.54,-1.02,0.0
+0.67,0.51,0.0,1.14,-0.21,1.11,-1.47,0.75,0.65,0.51,0.0,1.13,0.91,0.88,0.0,1.75,0.51,0.54,0.0,1.02
+0.55,1.29,-0.09,3.0,1.19,7.4,-11.48,6.97,0.55,1.25,-0.06,2.91,3.32,2.6,0.0,5.62,0.56,0.56,0.0,1.53
+0.26,0.2,0.0,0.49,0.16,3.11,-3.3,2.95,0.25,0.14,0.0,0.4,0.21,0.4,-0.12,0.68,0.31,0.77,-0.51,1.02

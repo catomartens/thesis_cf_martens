@@ -1,0 +1,51 @@
+alpha,scenario,area_type,parameter,change_direction,length_change_%,risk_change_%,energy_change_%,turns_change_%,height_changes_change_%
+0.0,Meadows and open grass - Communication -1,Meadows and open grass,Communication,-1,0.0,-0.22181478226949236,0.0,0.0,0.0
+0.0,Meadows and open grass - Communication +1,Meadows and open grass,Communication,1,0.0,0.22181478226950893,0.0,0.0,0.0
+0.0,Meadows and open grass - Electrical -1,Meadows and open grass,Electrical,-1,0.0,0.0,0.0,0.0,0.0
+0.0,Meadows and open grass - Electrical +1,Meadows and open grass,Electrical,1,0.0,0.22181478226950893,0.0,0.0,0.0
+0.0,Meadows and open grass - Interference -1,Meadows and open grass,Interference,-1,0.0,0.0,0.0,0.0,0.0
+0.0,Meadows and open grass - Interference +1,Meadows and open grass,Interference,1,0.0,0.22181478226950893,0.0,0.0,0.0
+0.0,Meadows and open grass - Navigational -1,Meadows and open grass,Navigational,-1,0.0,0.0,0.0,0.0,0.0
+0.0,Meadows and open grass - Navigational +1,Meadows and open grass,Navigational,1,0.0,0.22181478226950893,0.0,0.0,0.0
+0.0,Meadows and open grass - Obstacles -1,Meadows and open grass,Obstacles,-1,0.0,-0.22181478226949236,0.0,0.0,0.0
+0.0,Meadows and open grass - Obstacles +1,Meadows and open grass,Obstacles,1,0.0,0.22181478226950893,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Communication -1,Pedestrian and cycling paths,Communication,-1,0.0,-1.9713037526734674,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Communication +1,Pedestrian and cycling paths,Communication,1,0.0,1.9713037526734505,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Electrical -1,Pedestrian and cycling paths,Electrical,-1,0.0,-1.9713037526734674,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Electrical +1,Pedestrian and cycling paths,Electrical,1,0.0,1.9713037526734505,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Interference -1,Pedestrian and cycling paths,Interference,-1,0.0,-1.9713037526734674,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Interference +1,Pedestrian and cycling paths,Interference,1,0.0,1.9713037526734505,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Navigational -1,Pedestrian and cycling paths,Navigational,-1,0.0,-1.9713037526734674,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Navigational +1,Pedestrian and cycling paths,Navigational,1,0.0,1.9713037526734505,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Obstacles -1,Pedestrian and cycling paths,Obstacles,-1,0.0,-1.9713037526734674,0.0,0.0,0.0
+0.0,Pedestrian and cycling paths - Obstacles +1,Pedestrian and cycling paths,Obstacles,1,0.0,1.9713037526734505,0.0,0.0,0.0
+0.0,Regional roads - Communication -1,Regional roads,Communication,-1,0.0,0.0,0.0,0.0,0.0
+0.0,Regional roads - Communication +1,Regional roads,Communication,1,0.0,2.511828224541746,0.0,0.0,0.0
+0.0,Regional roads - Electrical -1,Regional roads,Electrical,-1,0.0,-2.5118282245417127,0.0,0.0,0.0
+0.0,Regional roads - Electrical +1,Regional roads,Electrical,1,0.0,2.511828224541746,0.0,0.0,0.0
+0.0,Regional roads - Interference -1,Regional roads,Interference,-1,0.0,-2.5118282245417127,0.0,0.0,0.0
+0.0,Regional roads - Interference +1,Regional roads,Interference,1,0.0,2.511828224541746,0.0,0.0,0.0
+0.0,Regional roads - Navigational -1,Regional roads,Navigational,-1,0.0,-2.5118282245417127,0.0,0.0,0.0
+0.0,Regional roads - Navigational +1,Regional roads,Navigational,1,0.0,2.511828224541746,0.0,0.0,0.0
+0.0,Regional roads - Obstacles -1,Regional roads,Obstacles,-1,0.0,-2.5118282245417127,0.0,0.0,0.0
+0.0,Regional roads - Obstacles +1,Regional roads,Obstacles,1,0.0,2.511828224541746,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Communication -1","Rivers, canals and streams",Communication,-1,0.0,-0.09822806038513135,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Communication +1","Rivers, canals and streams",Communication,1,0.0,0.09822806038513135,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Electrical -1","Rivers, canals and streams",Electrical,-1,0.0,0.0,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Electrical +1","Rivers, canals and streams",Electrical,1,0.0,0.09822806038513135,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Interference -1","Rivers, canals and streams",Interference,-1,0.0,0.0,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Interference +1","Rivers, canals and streams",Interference,1,0.0,0.09822806038513135,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Navigational -1","Rivers, canals and streams",Navigational,-1,0.0,0.0,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Navigational +1","Rivers, canals and streams",Navigational,1,0.0,0.09822806038513135,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Obstacles -1","Rivers, canals and streams",Obstacles,-1,0.0,-0.09822806038513135,0.0,0.0,0.0
+0.0,"Rivers, canals and streams - Obstacles +1","Rivers, canals and streams",Obstacles,1,0.0,0.09822806038513135,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Communication -1,Tracks and rural access roads,Communication,-1,0.0,-1.2895248372892516,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Communication +1,Tracks and rural access roads,Communication,1,0.0,1.289524837289202,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Electrical -1,Tracks and rural access roads,Electrical,-1,0.0,-1.2895248372892516,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Electrical +1,Tracks and rural access roads,Electrical,1,0.0,1.289524837289202,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Interference -1,Tracks and rural access roads,Interference,-1,0.0,0.0,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Interference +1,Tracks and rural access roads,Interference,1,0.0,1.289524837289202,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Navigational -1,Tracks and rural access roads,Navigational,-1,0.0,-1.2895248372892516,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Navigational +1,Tracks and rural access roads,Navigational,1,0.0,1.289524837289202,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Obstacles -1,Tracks and rural access roads,Obstacles,-1,0.0,-1.2895248372892516,0.0,0.0,0.0
+0.0,Tracks and rural access roads - Obstacles +1,Tracks and rural access roads,Obstacles,1,0.0,1.289524837289202,0.0,0.0,0.0
