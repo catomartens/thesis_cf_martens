@@ -7,9 +7,6 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import contextily as ctx
 from matplotlib.lines import Line2D
-import geopandas as gpd
-import matplotlib.pyplot as plt
-import contextily as ctx
 from matplotlib.patches import Patch
 
 def plot_graph_on_folium(G, plot_all_lines=True, connected_paths=False, gdf_polygons=None, plot_waypoints=True):
@@ -212,23 +209,6 @@ def plot_graph_on_folium(G, plot_all_lines=True, connected_paths=False, gdf_poly
 
     return m
 
-import folium
-import pyproj
-from shapely.geometry import Point, LineString, Polygon
-from shapely.ops import transform
-from shapely.wkt import loads as wkt_loads
-import geopandas as gpd
-import matplotlib.pyplot as plt
-import contextily as ctx
-from matplotlib.lines import Line2D
-
-import geopandas as gpd
-import matplotlib.pyplot as plt
-from shapely.geometry import LineString
-from matplotlib.lines import Line2D
-from matplotlib.patches import Patch
-import contextily as ctx
-
 def plot_uav_segments_with_legend(connected_paths, title=None, postnl_points=None):
     """
     Plot a map of UAV corridor segments colored by edge type (etype), including optional PostNL and distribution points.
@@ -292,7 +272,7 @@ def plot_uav_segments_with_legend(connected_paths, title=None, postnl_points=Non
         'No-fly zone': '#B22222'
     }
 
-    # --- Extract geometries and etypes
+    # Extract geometries and etypes
     segments, etypes = [], []
     for _, _, _, _, path_geometries, etype_array in connected_paths:
         for (line_tuple, *_), etype in zip(path_geometries, etype_array):
@@ -305,14 +285,14 @@ def plot_uav_segments_with_legend(connected_paths, title=None, postnl_points=Non
     gdf_web = gdf_segments.to_crs(epsg=3857)
     colors = gdf_web["etype"].map(area_color_map).fillna("#cccccc")
 
-    # --- Base map
+    # Base map
     fig, ax = plt.subplots(figsize=(20, 23), dpi=300)
     gdf_web.plot(color=colors, ax=ax, linewidth=6, zorder=2)
     ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik, alpha=0.3, zorder=1)
     ax.set_axis_off()
     ax.set_title(title, fontsize=24)
 
-    # --- Plot PostNL & distribution points
+    # Plot PostNL & distribution points
     legend_elements = [
         Line2D([0], [0], color=color, lw=5, label=etype)
         for etype, color in area_color_map.items()

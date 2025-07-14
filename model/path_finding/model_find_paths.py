@@ -1,5 +1,6 @@
 import numpy as np
 import networkx as nx
+import pandas as pd
 from shapely.geometry import LineString
 
 def apply_weighted_cost(
@@ -70,6 +71,83 @@ def euclidean_heuristic(u, v, G):
     p2 = G.nodes[v]['geometry']
     return p1.distance(p2) 
 
+def calculate_path_metrics(G, path_nodes, path_edges):
+    """
+    Calculate various metrics for a given path.
+    
+    Returns:
+        dict: Dictionary containing all calculated metrics
+    """
+    metrics = {
+        'length': 0,
+        'risk': 0,
+        'energy': 0,
+        'turns': 0,
+        'height_changes': 0
+    }
+    
+    # Previous direction for turn calculation
+    prev_direction = None
+    
+    # Previous height for tracking changes
+    prev_height = G.nodes[path_nodes[0]].get('height', 30)
+    
+    for i, (u, v) in enumerate(path_edges):
+        edge_data = G.get_edge_data(u, v)
+        
+        # Length
+        length = edge_data.get('length', 1)
+        metrics['length'] += length
+        
+        # Risk (total risk = risk * length for the edge)
+        risk = edge_data.get('risk', 1)
+        metrics['risk'] += risk * length
+        
+        # Energy
+        energy = edge_data.get('energy', 0)
+        metrics['energy'] += energy
+        
+        # Height changes
+        current_height = edge_data.get('height', 30)
+        height_diff = current_height - prev_height
+        
+        # Count 30m changes (both up and down)
+        if abs(height_diff) >= 30:
+            metrics['height_changes'] += abs(height_diff) // 30
+            
+        prev_height = current_height
+        
+        # Direction changes (turns)
+        if i > 0:
+            # Get geometries to calculate direction
+            geom = edge_data.get('geometry')
+            if geom is None:
+                p1 = G.nodes[u]['geometry']
+                p2 = G.nodes[v]['geometry']
+                geom = LineString([p1, p2])
+            
+            # Calculate direction vector
+            coords = list(geom.coords)
+            if len(coords) >= 2:
+                dx = coords[-1][0] - coords[0][0]
+                dy = coords[-1][1] - coords[0][1]
+                current_direction = np.arctan2(dy, dx)
+                
+                if prev_direction is not None:
+                    # Calculate angle difference
+                    angle_diff = abs(current_direction - prev_direction)
+                    # Normalize to [0, π]
+                    if angle_diff > np.pi:
+                        angle_diff = 2 * np.pi - angle_diff
+                    
+                    # Count as turn if angle > 30 degrees
+                    if angle_diff > np.pi / 6:
+                        metrics['turns'] += 1
+                
+                prev_direction = current_direction
+    
+    return metrics
+
 def connect_distribution_to_postnl(G, alpha, method):
     """
     For each PostNL node, find the distribution node that yields the lowest total cost path.
@@ -80,8 +158,9 @@ def connect_distribution_to_postnl(G, alpha, method):
         method (str): 'astar' or 'dijkstra'
 
     Returns:
-        connected (list of tuples): (distribution_node, postnl_node, total_length, path_nodes, path_edges, etype_array)
+        connected (list of tuples): (distribution_node, postnl_node, path_nodes, path_edges, etype_array)
         not_connected (list): list of postnl_nodes that could not be connected.
+        metrics_df (pd.DataFrame): DataFrame with metrics for each connection
     """
     if method not in ['astar', 'dijkstra']:
         raise ValueError("Method must be either 'astar' or 'dijkstra'")
@@ -95,12 +174,14 @@ def connect_distribution_to_postnl(G, alpha, method):
 
     connected = []
     not_connected = []
+    metrics_list = []
 
     apply_weighted_cost(G, alpha)
 
     for postnl_node in postnl_nodes:
         best_path = None
         best_total_cost = float('inf')
+        best_metrics = None
 
         for dist_node in distribution_nodes:
             try:
@@ -113,50 +194,59 @@ def connect_distribution_to_postnl(G, alpha, method):
 
                 path_edges = list(zip(path_nodes[:-1], path_nodes[1:]))
 
-                total_length = 0
-                total_cost = 0
-                path_geometries = []
-                etype_array = []
-
-                for u, v in path_edges:
-                    edge_data = G.get_edge_data(u, v)
-                    geom = edge_data.get('geometry')
-                    if geom is None:
-                        p1 = G.nodes[u]['geometry']
-                        p2 = G.nodes[v]['geometry']
-                        geom = LineString([p1, p2])
-
-                    path_geometries.append((geom, u, v))
-                    etype_array.append(edge_data.get('etype', 'unknown'))
-
-                    length = edge_data.get('length', geom.length)
-                    cost = edge_data.get('cost', 1)
-
-                    total_length += length
-                    total_cost += cost
+                # Calculate total cost for comparison
+                total_cost = sum(G.get_edge_data(u, v).get('cost', 1) for u, v in path_edges)
 
                 if total_cost < best_total_cost:
                     best_total_cost = total_cost
-                    best_path = (dist_node, postnl_node, total_length, path_nodes, path_geometries, etype_array)
+                    
+                    # Get path geometries and edge types
+                    path_geometries = []
+                    etype_array = []
+                    
+                    for u, v in path_edges:
+                        edge_data = G.get_edge_data(u, v)
+                        geom = edge_data.get('geometry')
+                        if geom is None:
+                            p1 = G.nodes[u]['geometry']
+                            p2 = G.nodes[v]['geometry']
+                            geom = LineString([p1, p2])
+                        
+                        path_geometries.append((geom, u, v))
+                        etype_array.append(edge_data.get('etype', 'unknown'))
+                    
+                    # Calculate metrics for this path
+                    best_metrics = calculate_path_metrics(G, path_nodes, path_edges)
+                    best_metrics['distribution_node'] = dist_node
+                    best_metrics['postnl_node'] = postnl_node
+                    
+                    best_path = (dist_node, postnl_node, path_nodes, path_geometries, etype_array)
 
             except nx.NetworkXNoPath:
                 continue
 
         if best_path:
             connected.append(best_path)
-            print(f"Connected: {best_path[0]} → {postnl_node} | Length: {best_path[2]:.1f} m | Cost: {best_total_cost:.2f}")
+            metrics_list.append(best_metrics)
+            print(f"Connected: {best_path[0]} → {postnl_node} | Length: {best_metrics['length']:.1f} m")
         else:
             not_connected.append((postnl_node,))
             print(f"No path: {postnl_node}")
 
-    # Summary
+    # Create metrics DataFrame
+    metrics_df = pd.DataFrame(metrics_list)
+    
+    # Calculate summary statistics
     print(f"\nConnection summary:")
     print(f" - Successful: {len(connected)}")
     print(f" - Failed:     {len(not_connected)}")
-    if connected:
-        lengths = [c[2] for c in connected]
-        print(f" - Average length: {np.mean(lengths):.1f} m")
-        print(f" - Longest path:   {np.max(lengths):.1f} m")
-        print(f" - Shortest path:  {np.min(lengths):.1f} m")
+    
+    if not metrics_df.empty:
+        print(f"\nMetrics summary:")
+        print(f" - Length:     min={metrics_df['length'].min():.1f}, max={metrics_df['length'].max():.1f}, avg={metrics_df['length'].mean():.1f} m")
+        print(f" - Risk:       min={metrics_df['risk'].min():.1f}, max={metrics_df['risk'].max():.1f}, avg={metrics_df['risk'].mean():.1f}")
+        print(f" - Energy:     min={metrics_df['energy'].min():.1f}, max={metrics_df['energy'].max():.1f}, avg={metrics_df['energy'].mean():.1f} Wh")
+        print(f" - Turns:      min={metrics_df['turns'].min()}, max={metrics_df['turns'].max()}, avg={metrics_df['turns'].mean():.1f}")
+        print(f" - Height Δ:   min={metrics_df['height_changes'].min()}, max={metrics_df['height_changes'].max()}, avg={metrics_df['height_changes'].mean():.1f}")
 
-    return connected, not_connected
+    return connected, not_connected, metrics_df

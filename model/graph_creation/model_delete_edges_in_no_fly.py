@@ -7,8 +7,13 @@ def extract_edges_to_gdf(G):
     """
     Extracts all valid LineString edges from a graph and returns them as a GeoDataFrame,
     including geometry, length, and risk attributes. Only edges with LineString geometries are included.
-    """
 
+    Args:
+        G (networkx.Graph): The input graph containing edges with geometry attributes.
+    
+    Returns:
+        GeoDataFrame: A GeoDataFrame containing edges with their geometries, lengths, and risk attributes.
+    """
     edges = []
 
     # Iterate over all edges in the graph

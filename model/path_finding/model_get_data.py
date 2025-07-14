@@ -1,7 +1,6 @@
 import geopandas as gpd
 import pandas as pd
 
-
 def read_geojson(file_path, depot, all=True):
     """
     Reads a GeoJSON file

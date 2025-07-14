@@ -13,16 +13,11 @@ from model_find_paths import connect_distribution_to_postnl
 def evaluate_alpha_tradeoff(G, alpha_list, method):
     """
     Evaluate routing trade-offs for different alpha values by computing summary metrics
-    across all distribution → PostNL paths, including both route and topological metrics.
-
-    Adds total cost calculations.
+    across all distribution → PostNL paths using the metrics_df from connect_distribution_to_postnl.
 
     Returns:
         tuple:
-            - pd.DataFrame: Summary per alpha with metrics:
-                ['alpha', 'n_paths', 'mean_risk', 'mean_energy', 'mean_cost', 'mean_length',
-                 'max_length', 'min_length', 'avg_steps', 'n_unique_nodes', 'n_unique_etypes',
-                 'avg_node_degree', 'avg_clustering', 'edge_node_ratio', 'diameter', 'n_articulations']
+            - pd.DataFrame: Summary per alpha with aggregated metrics
             - list of str: All etypes observed across all alphas (flat list)
             - dict: Mapping from alpha to the list of etypes for that alpha
     """
@@ -31,110 +26,83 @@ def evaluate_alpha_tradeoff(G, alpha_list, method):
     etypes_per_alpha = {}
 
     for alpha in alpha_list:
-        connected, not_connected = connect_distribution_to_postnl(G, alpha, method=method)
-
-        total_risks = []
-        total_energies = []
-        total_costs = []
-        total_lengths = []
-        step_counts = []
-        unique_nodes = set()
+        # Get metrics_df directly from connect_distribution_to_postnl
+        connected, not_connected, metrics_df = connect_distribution_to_postnl(G, alpha, method=method)
+        
+        # Collect etypes for this alpha
         etypes_this_alpha = []
-
-        used_edges = set()
-        used_nodes = set()
-
-        for _, _, total_length, path_nodes, path_edges, etype_array in connected:
-            path_risk = 0
-            path_energy = 0
-            path_cost = 0
-
-            for geom, u, v in path_edges:
-                edge_data = G.get_edge_data(u, v)
-                length = edge_data.get("length", geom.length if geom else 1)
-                risk = edge_data.get("risk", 1)
-                energy = edge_data.get("energy", 0)
-
-                edge_cost = alpha * (risk * length) + (1 - alpha) * energy
-
-                path_risk += risk * length
-                path_energy += energy
-                path_cost += edge_cost
-
-                used_edges.add((u, v))
-                used_nodes.update([u, v])
-
-            total_lengths.append(total_length)
-            total_risks.append(path_risk)
-            total_energies.append(path_energy)
-            total_costs.append(path_cost)
-
-            step_coords = [pt for pt in path_nodes if isinstance(pt, tuple) and len(pt) == 2]
-            step_counts.append(len(step_coords))
-            unique_nodes.update(step_coords)
+        for _, _, _, path_geometries, etype_array in connected:
             etypes_this_alpha.extend(etype_array)
-
+        
         all_etypes.extend(etypes_this_alpha)
         etypes_per_alpha[alpha] = etypes_this_alpha
-
-        # Build used subgraph
-        G_sub = G.edge_subgraph(used_edges).copy()
-
-        # Compute topological metrics
-        if G_sub.number_of_nodes() > 0:
-            degrees = [deg for _, deg in G_sub.degree()]
-            avg_node_degree = np.mean(degrees)
-            clustering = nx.clustering(G_sub)
-            avg_clustering = np.mean(list(clustering.values())) if clustering else 0
-            edge_node_ratio = G_sub.number_of_edges() / G_sub.number_of_nodes()
-            is_conn = nx.is_connected(G_sub)
-            diameter = nx.diameter(G_sub) if is_conn else np.nan
-            n_articulations = len(list(nx.articulation_points(G_sub)))
-        else:
-            avg_node_degree = avg_clustering = edge_node_ratio = diameter = np.nan
-            n_articulations = 0
-
-        if connected:
+        
+        # Calculate summary statistics from metrics_df
+        if not metrics_df.empty:
             result = {
                 "alpha": alpha,
-                "n_paths": len(connected),
-                "mean_risk": np.mean(total_risks),
-                "mean_energy": np.mean(total_energies),
-                "mean_cost": np.mean(total_costs),
-                "mean_length": np.mean(total_lengths),
-                "max_length": np.max(total_lengths),
-                "min_length": np.min(total_lengths),
-                "avg_steps": np.mean(step_counts),
-                "n_unique_nodes": len(unique_nodes),
+                "n_paths": len(metrics_df),
+                "mean_length": metrics_df['length'].mean(),
+                "min_length": metrics_df['length'].min(),
+                "max_length": metrics_df['length'].max(),
+                "std_length": metrics_df['length'].std(),
+                "mean_risk": metrics_df['risk'].mean(),
+                "min_risk": metrics_df['risk'].min(),
+                "max_risk": metrics_df['risk'].max(),
+                "std_risk": metrics_df['risk'].std(),
+                "mean_energy": metrics_df['energy'].mean(),
+                "min_energy": metrics_df['energy'].min(),
+                "max_energy": metrics_df['energy'].max(),
+                "std_energy": metrics_df['energy'].std(),
+                "mean_turns": metrics_df['turns'].mean(),
+                "min_turns": metrics_df['turns'].min(),
+                "max_turns": metrics_df['turns'].max(),
+                "mean_height_changes": metrics_df['height_changes'].mean(),
+                "min_height_changes": metrics_df['height_changes'].min(),
+                "max_height_changes": metrics_df['height_changes'].max(),
                 "n_unique_etypes": len(set(etypes_this_alpha)),
-                "avg_node_degree": avg_node_degree,
-                "avg_clustering": avg_clustering,
-                "edge_node_ratio": edge_node_ratio,
-                "diameter": diameter,
-                "n_articulations": n_articulations
+                "n_failed_connections": len(not_connected)
             }
         else:
+            # No successful connections
             result = {
                 "alpha": alpha,
                 "n_paths": 0,
-                "mean_risk": np.nan,
-                "mean_energy": np.nan,
-                "mean_cost": np.nan,
                 "mean_length": np.nan,
-                "max_length": np.nan,
                 "min_length": np.nan,
-                "avg_steps": np.nan,
-                "n_unique_nodes": 0,
+                "max_length": np.nan,
+                "std_length": np.nan,
+                "mean_risk": np.nan,
+                "min_risk": np.nan,
+                "max_risk": np.nan,
+                "std_risk": np.nan,
+                "mean_energy": np.nan,
+                "min_energy": np.nan,
+                "max_energy": np.nan,
+                "std_energy": np.nan,
+                "mean_turns": np.nan,
+                "min_turns": np.nan,
+                "max_turns": np.nan,
+                "mean_height_changes": np.nan,
+                "min_height_changes": np.nan,
+                "max_height_changes": np.nan,
                 "n_unique_etypes": 0,
-                "avg_node_degree": np.nan,
-                "avg_clustering": np.nan,
-                "edge_node_ratio": np.nan,
-                "diameter": np.nan,
-                "n_articulations": 0
+                "n_failed_connections": len(not_connected)
             }
-
+        
         results.append(result)
-
+        
+        # Print summary for this alpha
+        print(f"\nAlpha {alpha:.2f} summary:")
+        print(f"  Successful paths: {result['n_paths']}")
+        print(f"  Failed connections: {result['n_failed_connections']}")
+        if result['n_paths'] > 0:
+            print(f"  Avg length: {result['mean_length']:.1f} m")
+            print(f"  Avg risk: {result['mean_risk']:.1f}")
+            print(f"  Avg energy: {result['mean_energy']:.1f} Wh")
+            print(f"  Avg turns: {result['mean_turns']:.1f}")
+            print(f"  Avg height changes: {result['mean_height_changes']:.1f}")
+    
     return pd.DataFrame(results), all_etypes, etypes_per_alpha
 
 def plot_common_etypes_per_alpha(etype_dict_per_alpha, city="Unknown", title_prefix="Most Common Etypes in"):
@@ -214,11 +182,6 @@ def plot_common_etypes_per_alpha(etype_dict_per_alpha, city="Unknown", title_pre
         plt.tight_layout()
         plt.show()
 
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-from collections import Counter
-
 def plot_common_etypes_grouped(etype_dict_per_alpha, city="Unknown", title_prefix="Etype Comparison"):
     """
     Creates a grouped bar plot comparing etype counts between alpha = 0 and alpha = 1.
@@ -259,7 +222,6 @@ def plot_common_etypes_grouped(etype_dict_per_alpha, city="Unknown", title_prefi
     plt.legend(title="Alpha")
     plt.tight_layout()
     plt.show()
-
 
 def plot_pareto_tradeoff(df_summary, x_metric="mean_risk", y_metric="mean_energy"):
     """
