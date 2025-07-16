@@ -20,7 +20,7 @@ thesis_cf_martens/
 │
 ├── 1.get_osm_data/           # Retrieves and maps relevant infrastructure from OSM
 ├── 2.risk_analysis/          # Assigns risk scores and overlays no-fly zones
-├── 3.graph_model/            # Builds graph and computes risk-aware UAV routes
+├── 3._no_fly_zones/          # 
 ├── distribution_centres/     # Cleans and prepares distribution centre data
 ├── hard_constraints/         # Experiments with strict (hard) no-fly zone constraints
 ├── model/                    # Contains graph creation and pathfinding logic
@@ -41,14 +41,15 @@ The core workflow consists of the following steps:
 
 2. **Risk Assessment**  
    - `assign_risk.ipynb` — Applies the SQRA model using a risk score file (`risk_scores.csv`)
-   - `assign_no_fly_zones.ipynb` — Integrates no-fly zones from Dutch government and Natura2000 datasets
-   - `eda_nofly.ipynb` — Cleans and explores the no-fly data
 
-3. **Graph Construction**  
+3. **No Fly zones**
+   - `assign_no_fly_zones.ipynb` — Integrates no-fly zones from Dutch government and Natura2000 datasets
+
+4. **Graph Construction (in Model)**  
    `get_graph.ipynb` — Converts the cleaned GeoDataFrame into a directed graph suitable for corridor routing
 
-4. **Route Planning**  
-   `route_finding.ipynb` — Computes UAV paths from distribution centres to PostNL pickup points based on risk–efficiency trade-offs
+5. **Route Planning (in Model)**  
+   `find_paths.ipynb` — Computes UAV paths from distribution centres to PostNL pickup points based on risk–efficiency trade-offs
 
 ## Key Features
 
