@@ -17,19 +17,15 @@ The thesis responds to the growing need for sustainable and efficient last-mile 
 ## Repository Structure
 
 thesis_cf_martens/
-│
-├── 1.get_osm_data/           # Retrieves and maps relevant infrastructure from OSM
-├── 2.risk_analysis/          # Assigns risk scores and overlays no-fly zones
-├── 3._no_fly_zones/          # 
-├── distribution_centres/     # Cleans and prepares distribution centre data
-├── hard_constraints/         # Experiments with strict (hard) no-fly zone constraints
-├── model/                    # Contains graph creation and pathfinding logic
-├── sensitivity_analysis/     # Contains three different sensitivity analysis experiments
-│
-├── data/                     # Input and reference data (e.g., risk scores, boundaries)
-├── output/                   # GeoJSON and result exports
-├── requirements.txt          # Python package dependencies
-└── README.md
+- 1.get_osm_data/           # Retrieves and maps relevant infrastructure from OSM
+- 2.risk_analysis/          # Assigns risk scores and overlays no-fly zones
+- 3._no_fly_zones/          # 
+- distribution_centres/     # Cleans and prepares distribution centre data
+- hard_constraints/         # Experiments with strict (hard) no-fly zone constraints
+- model/                    # Contains graph creation and pathfinding logic
+- sensitivity_analysis/     # Contains three different sensitivity analysis experiments
+- requirements.txt          # Python package dependencies
+- README.md
 
 
 ## Notebooks and Workflow
